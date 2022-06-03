@@ -75,3 +75,8 @@ p {
 .bold {
   font-weight: bolder;
 }
+
+.weather-card {
+  background-color: lightblue;
+  margin: 5px;
+}
