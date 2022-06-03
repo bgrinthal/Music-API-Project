@@ -59,29 +59,29 @@ function start() {
 
 
 
-// function ticketMaster() {
+function ticketMaster() {
 
-// // to grab from search box
-// // var artistName = document.querySelector('#search-input').value; 
+// to grab from search box
+// var artistName = document.querySelector('#search-input').value; 
 
-// // to test code
-// var artistName = "harrystyle"
+// to test code
+var artistName = "harrystyle"
 
-// var queryString = "https://app.ticketmaster.com/discovery/v2/attractions.json?countryCode=US&name=" + artistName + "&classificationName=music&apikey=uUGLWbIhHXmBGx7OldzHzYyJPFEnqPud"
+var queryString = "https://app.ticketmaster.com/discovery/v2/attractions.json?countryCode=US&name=" + artistName + "&classificationName=music&apikey=uUGLWbIhHXmBGx7OldzHzYyJPFEnqPud"
 
-//   fetch(queryString, {
-//       cache: 'reload',
-//   })
-//       .then(function (response) {
-//           return response.json();
-//       })
-//       .then(function (data) {
-//           console.log(data);
+  fetch(queryString, {
+      cache: 'reload',
+  })
+      .then(function (response) {
+          return response.json();
+      })
+      .then(function (data) {
+          console.log(data);
 
-//           var nameArtist
+          var nameArtist
 
-//       })
-// }
+      })
+}
 
 function renderBillboard (artists) {
   billboardDiv.innerHTML = "";
