@@ -1,10 +1,30 @@
 // var apiKey = "9473e5cba5msh74e0809a1e4e6cfp166f95jsnf68009c0712b";
-var apiKey = "deeee58b0fmsh827d4e2c1b2b4b3p118ac7jsncfe4d7ea6eb8";
+//var apiKey = "deeee58b0fmsh827d4e2c1b2b4b3p118ac7jsncfe4d7ea6eb8";
 // var apiKeyKk = "e39f34ac20msh1b788198a77aac4p1f6b56jsnf6ae5a296344";
 var billboardDiv = document.getElementById('top-10');
 
 var spotifyContainer = document.getElementById("spotify-artists");
 var billboardContainer = document.getElementById("billboard");
+
+var apiKey = "deeee58b0fmsh827d4e2c1b2b4b3p118ac7jsncfe4d7ea6eb8";
+var musixKey = "30134de52c4876b8e46fb0bc4deac1f1"
+var billBoardKey ='9473e5cba5msh74e0809a1e4e6cfp166f95jsnf68009c0712b'
+var testContainer = document.getElementById("test");
+var citySearch = document.getElementById('search');
+var submtBtn = document.getElementById('searchBtn')
+
+function run(){
+  fetch("https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&&city="+ citySearch.value + "&size=50&classificationName=music,concert,-theatre,-musical&apikey=ZNUGzsWtaFDTZqTsYFz6uJO63BV2G624").then(function(res){
+    return res.json()
+  })
+  .then(function(res){
+    console.log(res._embedded.events)
+  })
+}
+submtBtn.addEventListener('click', run)
+
+
+
 
 function start() {
   const spotifyOptions = {
@@ -59,29 +79,6 @@ function start() {
 
 
 
-function ticketMaster() {
-
-// to grab from search box
-// var artistName = document.querySelector('#search-input').value; 
-
-// to test code
-var artistName = "harrystyle"
-
-var queryString = "https://app.ticketmaster.com/discovery/v2/attractions.json?countryCode=US&name=" + artistName + "&classificationName=music&apikey=uUGLWbIhHXmBGx7OldzHzYyJPFEnqPud"
-
-  fetch(queryString, {
-      cache: 'reload',
-  })
-      .then(function (response) {
-          return response.json();
-      })
-      .then(function (data) {
-          console.log(data);
-
-          var nameArtist
-
-      })
-}
 
 function renderBillboard (artists) {
   billboardDiv.innerHTML = "";
@@ -236,7 +233,12 @@ function renderBillboard (artists) {
   image8.classList.add("top-10");
   image9.classList.add("top-10");
   image10.classList.add("top-10");
+  
 }
+
+
+
+
 
 fetch('https://billboard-api2.p.rapidapi.com/hot-100?range=1-10&date=2022-06-02', {
 	method: 'GET',
@@ -253,8 +255,6 @@ fetch('https://billboard-api2.p.rapidapi.com/hot-100?range=1-10&date=2022-06-02'
   
 
 
-
-
-
 start();
+
 // ticketMaster();
