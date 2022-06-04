@@ -23,37 +23,37 @@ function start() {
     .then((response) => response.json())
     .then((response) => {
       spotifyContainer.innerHTML = "";
-        for (var i = 0; i < 10; i++) {
-            // console.log the results from the fetch
-            console.log(response.content[i])
+      for (var i = 0; i < 10; i++) {
+        // console.log the results from the fetch
+        console.log(response.content[i])
 
-            // created variables for the artist name, song name.
-            var position = response.content[i];
-            var song = response.content[i];
-            var ranking = position.position;
-            var songName = song.track_title;
-            var artistName = song.artists[0];
+        // created variables for the artist name, song name.
+        var position = response.content[i];
+        var song = response.content[i];
+        var ranking = position.position;
+        var songName = song.track_title;
+        var artistName = song.artists[0];
 
-            var div = document.createElement("div");
+        var div = document.createElement("div");
 
-            // created a variable for the image
-            var img = document.createElement("img");
-            img.setAttribute("src", song.thumbnail);
-    
+        // created a variable for the image
+        var img = document.createElement("img");
+        img.setAttribute("src", song.thumbnail);
 
-            // created a variable for the text
-            var p = document.createElement("p");
-            p.textContent = ranking + ". " + songName + " by " + artistName;
 
-            var a = document.createElement("a");
-            a.setAttribute("href", song.track_url);
-            a.textContent = "Listen Here";
+        // created a variable for the text
+        var p = document.createElement("p");
+        p.textContent = ranking + ". " + songName + " by " + artistName;
 
-            // appended the text to the div
-            div.append(p, img, a);
+        var a = document.createElement("a");
+        a.setAttribute("href", song.track_url);
+        a.textContent = "Listen Here";
 
-            spotifyContainer.append(div);
-        }
+        // appended the text to the div
+        div.append(p, img, a);
+
+        spotifyContainer.append(div);
+      }
     })
     .catch((err) => console.error(err));
 };
@@ -62,67 +62,67 @@ function start() {
 
 var apiKey = "deeee58b0fmsh827d4e2c1b2b4b3p118ac7jsncfe4d7ea6eb8";
 var musixKey = "30134de52c4876b8e46fb0bc4deac1f1"
-var billBoardKey ='9473e5cba5msh74e0809a1e4e6cfp166f95jsnf68009c0712b'
+var billBoardKey = '9473e5cba5msh74e0809a1e4e6cfp166f95jsnf68009c0712b'
 var testContainer = document.getElementById("test");
 var citySearch = document.getElementById('search');
 var submtBtn = document.getElementById('searchBtn')
-function ticketMaster(){
-  fetch("https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&&city="+ citySearch.value + "&size=50&classificationName=music,concert,-theatre,-musical&apikey=ZNUGzsWtaFDTZqTsYFz6uJO63BV2G624").then(function(res){
+function ticketMaster() {
+  fetch("https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&&city=" + citySearch.value + "&size=50&classificationName=music,concert,-theatre,-musical&apikey=ZNUGzsWtaFDTZqTsYFz6uJO63BV2G624").then(function (res) {
     return res.json()
   })
-  .then(function(res){
-    console.log(res._embedded.events);
-    console.log(res._embedded.events[0]._embedded.venues[0].city.name);
-    console.log(res._embedded.events[0]._embedded.venues[0].name);
-    console.log(res._embedded.events[0]._embedded.attractions[0].name);
-    console.log(res._embedded.events[0].dates.start.localDate);
-    console.log(res._embedded.events[0]._embedded.attractions[0].url);
+    .then(function (res) {
+      console.log(res._embedded.events);
+      console.log(res._embedded.events[0]._embedded.venues[0].city.name);
+      console.log(res._embedded.events[0]._embedded.venues[0].name);
+      console.log(res._embedded.events[0]._embedded.attractions[0].name);
+      console.log(res._embedded.events[0].dates.start.localDate);
+      console.log(res._embedded.events[0]._embedded.attractions[0].url);
 
-    ticketMasterContainer.innerHTML = "";
-        for (var i = 0; i < 6; i++) {
-            // console.log the results from the fetch
+      ticketMasterContainer.innerHTML = "";
+      for (var i = 0; i < 6; i++) {
+        // console.log the results from the fetch
 
-            // created variables for the avenue information
-            var artistName = res._embedded.events[i]._embedded.attractions[0].name;
-            var venueName = res._embedded.events[i]._embedded.venues[0].name;
-            var eventDate = res._embedded.events[i].dates.start.localDate;
-            var ticketUrl = res._embedded.events[i]._embedded.attractions[0].url;
+        // created variables for the avenue information
+        var artistName = res._embedded.events[i]._embedded.attractions[0].name;
+        var venueName = res._embedded.events[i]._embedded.venues[0].name;
+        var eventDate = res._embedded.events[i].dates.start.localDate;
+        var ticketUrl = res._embedded.events[i]._embedded.attractions[0].url;
 
-            var div = document.createElement("div");
-    
+        var div = document.createElement("div");
 
-            // created a variable for the text
-            var artistNameAp = document.createElement("p");
-            artistNameAp.textContent = (i+1) + ") Artist: " + artistName;
 
-            var venueNameAp = document.createElement("p");
-            venueNameAp.textContent = "Venue: " + venueName;
+        // created a variable for the text
+        var artistNameAp = document.createElement("p");
+        artistNameAp.textContent = (i + 1) + ") Artist: " + artistName;
 
-            var eventDateAp = document.createElement("p");
-            eventDateAp.textContent = "Event Date: " + eventDate;
+        var venueNameAp = document.createElement("p");
+        venueNameAp.textContent = "Venue: " + venueName;
 
-            var ticketUrlAp = document.createElement("a");
-            ticketUrlAp.setAttribute("href", ticketUrl);
-            ticketUrlAp.textContent = ticketUrl;
+        var eventDateAp = document.createElement("p");
+        eventDateAp.textContent = "Event Date: " + eventDate;
 
-            var lineBreak = document.createElement("p");
-            lineBreak.textContent = " "
-            
+        var ticketUrlAp = document.createElement("a");
+        ticketUrlAp.setAttribute("href", ticketUrl);
+        ticketUrlAp.textContent = ticketUrl;
 
-            // appended the text to the div
-            div.append(artistNameAp, venueNameAp, eventDateAp, ticketUrlAp, lineBreak);
+        var lineBreak = document.createElement("p");
+        lineBreak.textContent = " "
 
-            ticketMasterContainer.append(div);
-        }
 
-  })
+        // appended the text to the div
+        div.append(artistNameAp, venueNameAp, eventDateAp, ticketUrlAp, lineBreak);
+
+        ticketMasterContainer.append(div);
+      }
+
+    })
 }
 
 // submtBtn.addEventListener('click', ticketMaster)
 
 
 
-function renderBillboard (artists) {
+function renderBillboard(artists) {
   billboardDiv.innerHTML = "";
   // Artist 1
   var div1 = document.createElement('div');
@@ -131,7 +131,7 @@ function renderBillboard (artists) {
   var artist1 = document.createElement('h3');
   var image1 = document.createElement('img');
   var lineBreak1 = document.createElement('br');
-  rank1.textContent = artists[1].rank; 
+  rank1.textContent = artists[1].rank;
   title1.textContent = artists[1].title;
   artist1.textContent = artists[1].artist;
   image1.src = artists[1].image;
@@ -145,7 +145,7 @@ function renderBillboard (artists) {
   var artist2 = document.createElement('h3');
   var image2 = document.createElement('img');
   var lineBreak2 = document.createElement('br');
-  rank2.textContent = artists[2].rank; 
+  rank2.textContent = artists[2].rank;
   title2.textContent = artists[2].title;
   artist2.textContent = artists[2].artist;
   image2.src = artists[2].image;
@@ -275,7 +275,7 @@ function renderBillboard (artists) {
   image8.classList.add("top-10");
   image9.classList.add("top-10");
   image10.classList.add("top-10");
-  
+
 }
 
 
@@ -283,19 +283,19 @@ function renderBillboard (artists) {
 
 
 fetch('https://billboard-api2.p.rapidapi.com/hot-100?range=1-10&date=2022-06-02', {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Host': 'billboard-api2.p.rapidapi.com',
-		'X-RapidAPI-Key': 'deeee58b0fmsh827d4e2c1b2b4b3p118ac7jsncfe4d7ea6eb8'
-	}
+  method: 'GET',
+  headers: {
+    'X-RapidAPI-Host': 'billboard-api2.p.rapidapi.com',
+    'X-RapidAPI-Key': 'deeee58b0fmsh827d4e2c1b2b4b3p118ac7jsncfe4d7ea6eb8'
+  }
 })
-	.then(response => response.json())
-	.then(response => {
+  .then(response => response.json())
+  .then(response => {
     // console.log(response)
     renderBillboard(response.content);
   });
-  
-// universal variables
+
+// universal variables for weather forecast
 var searchFormEl = document.querySelector('#search-form');
 var currentWeather = document.querySelector('#current-weather');
 var locationInfo = document.querySelector('#location');
@@ -313,90 +313,111 @@ var APIkey = "91d57b7fd6726c36fc275a86a5361130";
 
 
 function handleSearchFormSubmit(event) {
-    event.preventDefault();
+  event.preventDefault();
 
-    // grabs search input and stores in variable
-    var searchInputVal = searchInput.value;
+  // grabs search input and stores in variable
+  var searchInputVal = searchInput.value;
 
-    searchHistory.push(searchInputVal);
-    localStorage.setItem('City Name', JSON.stringify(searchHistory));
+  searchHistory.unshift(searchInputVal);
+  localStorage.setItem('City Name', JSON.stringify(searchHistory));
 
-    // checks for valid search input
-    if (!searchInputVal) {
-        console.error('You need a search input value!');
-        return;
-    }
+  // checks for valid search input
+  if (!searchInputVal) {
+    console.error('You need a search input value!');
+    return;
+  }
 
-    var queryString = "https://api.openweathermap.org/data/2.5/weather?q=" + searchInputVal + "&appid=" + APIkey + "&units=imperial"
+  var queryString = "https://api.openweathermap.org/data/2.5/weather?q=" + searchInputVal + "&appid=" + APIkey + "&units=imperial"
 
-    // first api fetch for current weather info
-    fetch(queryString, {
-        cache: 'reload',
+  // first api fetch for current weather info
+  fetch(queryString, {
+    cache: 'reload',
+  })
+    .then(function (response) {
+      return response.json();
     })
+    .then(function (data) {
+      console.log(data);
+      console.log(data.name);
+      console.log(data.main.temp);
+      console.log(data.wind.speed);
+      console.log(data.main.humidity);
+      console.log(data.coord.lat);
+      console.log(data.coord.lon);
+
+      // current weather variables navigated using the API
+      var currentLat = data.coord.lat;
+      var currentLon = data.coord.lon;
+
+      var latlonString = "https://api.openweathermap.org/data/2.5/onecall?lat=" + currentLat + "&lon=" + currentLon + "&exclude=hourly&units=imperial&appid=" + APIkey;
+
+      // second api fetch for daily weather info
+      fetch(latlonString, {
+        cache: 'reload',
+      })
         .then(function (response) {
-            return response.json();
+          return response.json();
         })
         .then(function (data) {
-            console.log(data);
-            console.log(data.name);
-            console.log(data.main.temp);
-            console.log(data.wind.speed);
-            console.log(data.main.humidity);
-            console.log(data.coord.lat);
-            console.log(data.coord.lon);
+          console.log(data);
+          console.log(data.daily[1].temp.day);
+          console.log(data.daily[1].wind_speed);
+          console.log(data.daily[1].humidity);
+          console.log("https://openweathermap.org/img/w/" + data.daily[1].weather[0].icon + ".png");
 
-            // current weather variables navigated using the API
-            var currentLat = data.coord.lat;
-            var currentLon = data.coord.lon;
+          // set time for 5 day forecast
+          for (let i = 1; i < 6; i++) {
+            var dailyTime = document.getElementById("daily").children[i - 1].children[0];
+            dailyTime.textContent = moment().add(i, 'days').format("MM/DD/YYYY");
+          }
 
-            var latlonString = "https://api.openweathermap.org/data/2.5/onecall?lat=" + currentLat + "&lon=" + currentLon + "&exclude=hourly&units=imperial&appid=" + APIkey;
+          // storing 5 day weather info iteration
+          for (let i = 1; i < 6; i++) {
 
-            // second api fetch for daily weather info
-            fetch(latlonString, {
-                cache: 'reload',
-            })
-                .then(function (response) {
-                    return response.json();
-                })
-                .then(function (data) {
-                    console.log(data);
-                    console.log(data.daily[1].temp.day);
-                    console.log(data.daily[1].wind_speed);
-                    console.log(data.daily[1].humidity);
-                    console.log("https://openweathermap.org/img/w/" + data.daily[1].weather[0].icon + ".png");
+            // all daily weather variables pulled from API
+            var dailyIconReset = document.getElementById("daily").children[i - 1].children[1];
+            var dailyTemp = document.getElementById("daily").children[i - 1].children[2];
+            var dailyWind = document.getElementById("daily").children[i - 1].children[3];
+            var dailyHumidity = document.getElementById('daily').children[i - 1].children[4];
 
-                    // set time for 5 day forecast
-                    for (let i = 1; i < 6; i++) {
-                        var dailyTime = document.getElementById("daily").children[i - 1].children[0];
-                        dailyTime.textContent = moment().add(i, 'days').format("MM/DD/YYYY");
-                    }
+            // pull icon 
+            var dailyIcon = data.daily[i].weather[0].icon;
+            var img = document.createElement('img');
+            img.src = "http://openweathermap.org/img/w/" + dailyIcon + ".png";
 
-                    // storing 5 day weather info iteration
-                    for (let i = 1; i < 6; i++) {
+            console.log(daily);
 
-                        // all daily weather variables pulled from API
-                        var dailyIconReset = document.getElementById("daily").children[i - 1].children[1];
-                        var dailyTemp = document.getElementById("daily").children[i - 1].children[2];
-                        var dailyWind = document.getElementById("daily").children[i - 1].children[3];
-                        var dailyHumidity = document.getElementById('daily').children[i - 1].children[4];
-
-                        // pull icon 
-                        var dailyIcon = data.daily[i].weather[0].icon;
-                        var img = document.createElement('img');
-                        img.src = "http://openweathermap.org/img/w/" + dailyIcon + ".png";
-
-                        console.log(daily);
-
-                        // displaying 5 day weather info
-                        dailyTemp.textContent = "Temp: " + data.daily[i].temp.day + " F";
-                        dailyWind.textContent = "Wind: " + data.daily[i].wind_speed + " mph";
-                        dailyHumidity.textContent = "Humidity: " + data.daily[i].humidity + " %";
-                        dailyIconReset.textContent = " "
-                        document.getElementById('icon-' + i).appendChild(img);
-                    }
-                })
+            // displaying 5 day weather info
+            dailyTemp.textContent = "Temp: " + data.daily[i].temp.day + " F";
+            dailyWind.textContent = "Wind: " + data.daily[i].wind_speed + " mph";
+            dailyHumidity.textContent = "Humidity: " + data.daily[i].humidity + " %";
+            dailyIconReset.textContent = " "
+            document.getElementById('icon-' + i).appendChild(img);
+          }
         })
+    })
 }
+
+// displays local storage on page refresh and displays last search
+document.addEventListener("DOMContentLoaded", function () {
+  if (localStorage.getItem('City Name')) {
+    searchHistory = localStorage.getItem("City Name", JSON.stringify(searchHistory));
+    searchHistory = JSON.parse(searchHistory);
+    console.log(searchHistory)
+    document.getElementById("search").value = searchHistory[0];
+    ticketMaster();
+    handleSearchFormSubmit(event);
+  }
+}
+);
+
+
+// clears local storage and reloads page 
+function clearStorage() {
+  localStorage.clear();
+  window.location.reload();
+}
+
 
 console.log(searchHistory);
 
