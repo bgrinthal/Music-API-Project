@@ -3,9 +3,10 @@
 Providing music-lovers the ease of discovering top trending songs, and concert searches with a weather forecast, all in one place.
 
 
-<b>Link to project:</b> <a href="#">Music Charts and Concerts</a>
-<!-- Insert image preview here -->
-
+<b>Link to project:</b> <a href="https://bgrinthal.github.io/Music-API-Project/">Music Charts and Concerts</a>
+<br><br>
+![Music Charts and Concerts](./assets/images/music-charts-and-concerts-1.png?raw=true "Music Charts and Concerts")
+![Music Charts and Concerts](./assets/images/music-charts-and-concerts-2.png?raw=true "Music Charts and Concerts")
 
 # Description
 

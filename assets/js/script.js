@@ -19,7 +19,7 @@ var citySearch = document.getElementById("search");
 var submtBtn = document.getElementById("searchBtn");
 
 var rapidApiKey = "deeee58b0fmsh827d4e2c1b2b4b3p118ac7jsncfe4d7ea6eb8";
-var apiKeyKk = "e39f34ac20msh1b788198a77aac4p1f6b56jsnf6ae5a296344";
+var apiKeyKk = "a7afb1f49emshcae55ade9379c39p147716jsnfb25db4b5284";
 var billboardDiv = document.getElementById("top-10");
 
 var spotifyContainer = document.getElementById("spotify-artists");
